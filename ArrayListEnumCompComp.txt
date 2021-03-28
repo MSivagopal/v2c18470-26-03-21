@@ -1,0 +1,20 @@
+package com.test.oops;
+
+import java.util.Comparator;
+
+public class ArrayListEnumCompComp implements Comparator<Organization> {
+	public int compare(Organization i1, Organization i2) {
+		Organization org1 = (Organization) i1;
+		Organization org2 = (Organization) i2;
+
+		if (org1.employee_id == org2.employee_id) {
+			return 0;
+		} else if (org1.employee_id > org2.employee_id) {
+			return 1;
+		} else {
+			return -1;
+		}
+
+	}
+
+}

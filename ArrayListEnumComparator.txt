@@ -1,0 +1,52 @@
+package com.test.oops;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayListEnumComparator {
+	public static void main(String[] args) {
+		ArrayList<Organization> set = new ArrayList<Organization>();
+		/*
+		 * Organization e1 = new Organization(2021, "Ragul", "Kumar", "Civil", 25000 );
+		 * Organization e2 = new Organization(2009, "Singaram", "Siva", "Hardware",
+		 * 22000 ); Organization e3 = new Organization(2041, "Sivaji", "Kumar", "Civil",
+		 * 25000 );
+		 * 
+		 * set.add(e1); set.add(e2); set.add(e3);
+		 */
+		set.add(new Organization(2021, "Ragul", "Kumar", "Civil", 25000, Organization.Status.PENDING));
+		set.add(new Organization(2009, "Singaram", "Siva", "Hardware", 22000, Organization.Status.CONFORM));
+		set.add(new Organization(2041, "Sivaji", "Kumar", "Civil", 25000, Organization.Status.REJECTED));
+
+		System.out.println("Employee Details");
+		System.out.println("ID-Name-Teamleader-Domain-Salary");
+
+		Collections.sort(set, new ArrayListEnumCompComp());
+
+		for (Organization em : set) {
+			System.out.println(em.employee_id + " " + em.employee_name + " " + em.teamleader + " " + em.domain + " "
+					+ em.salary + " " + em.status);
+		}
+	}
+}
+
+class Organization {
+	int employee_id, salary;
+	String employee_name, teamleader, domain;
+	Status status;
+
+	public Organization(int employee_id, String employee_name, String teamleader, String domain, int salary,
+			Status status) {
+		super();
+		this.employee_id = employee_id;
+		this.employee_name = employee_name;
+		this.teamleader = teamleader;
+		this.domain = domain;
+		this.salary = salary;
+		this.status = status;
+	}
+
+	enum Status {
+		CONFORM, PENDING, REJECTED
+	}
+}
